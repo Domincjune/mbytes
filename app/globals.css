@@ -42,6 +42,69 @@ body::after {
   opacity: 0.15;
 }
 
+/* Elegant dot patterns */
+@layer utilities {
+  .dot-pattern-subtle {
+    background-image: 
+      radial-gradient(circle, rgba(34, 211, 238, 0.15) 1.5px, transparent 1.5px),
+      radial-gradient(circle, rgba(244, 114, 182, 0.08) 1px, transparent 1px);
+    background-size: 
+      120px 120px,
+      180px 180px;
+    background-position: 
+      0 0,
+      40px 60px;
+  }
+
+  .dot-pattern-accent {
+    background-image: 
+      radial-gradient(circle, rgba(99, 102, 241, 0.12) 1.5px, transparent 1.5px),
+      radial-gradient(circle, rgba(34, 211, 238, 0.08) 1px, transparent 1px);
+    background-size: 
+      140px 140px,
+      200px 200px;
+    background-position: 
+      0 0,
+      70px 35px;
+  }
+
+  .line-pattern-vertical {
+    background-image: 
+      linear-gradient(90deg, rgba(34, 211, 238, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(244, 114, 182, 0.04) 1px, transparent 1px);
+    background-size: 
+      100px 1px,
+      150px 1px;
+    background-position: 
+      0 0,
+      50px 0;
+  }
+
+  .corner-accent-dots {
+    position: relative;
+  }
+
+  .corner-accent-dots::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background-image: 
+      radial-gradient(circle, rgba(34, 211, 238, 0.2) 2px, transparent 2px),
+      radial-gradient(circle, rgba(244, 114, 182, 0.12) 1.5px, transparent 1.5px);
+    background-size: 
+      80px 80px,
+      120px 120px;
+    background-position: 
+      0 0,
+      40px 60px;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -77,5 +140,9 @@ body::after {
 @layer components {
   .glass-card {
     @apply rounded-[2rem] border border-white/10 bg-[#121217]/70 backdrop-blur-xl shadow-[0_40px_120px_rgba(0,0,0,0.35)];
+  }
+
+  .glass-card-patterned {
+    @apply glass-card dot-pattern-subtle;
   }
 }
